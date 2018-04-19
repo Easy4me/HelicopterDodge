@@ -7,7 +7,7 @@ playerImg.src = "https://2.bp.blogspot.com/-bl7gFklSaAo/WPTQogpRiEI/AAAAAAAABGA/
 //playerImg.height = 75;
 
  let Bug = new Image();
-  Bug.src = "https://lh4.googleusercontent.com/P5XYTwK_a5UwMrTHHFe5tW8XGG-mjzJT-GBO41F6G3pNul2xM9YOUc7wPUTHscuqURTl90r81QUCovnb-BxDWLiC7coB4Z-qZrwB=w2474-h1606";
+  Bug.src = "bug.png";
  
 
 
