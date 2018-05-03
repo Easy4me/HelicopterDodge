@@ -129,7 +129,7 @@ function update() {
       box.down('d');
   } 
   // Generate a new obstacle every so often
-  if (Math.random() > 0.987) {
+  if (Math.random() > 0.5) {
     makeObstacle();
   }
   
