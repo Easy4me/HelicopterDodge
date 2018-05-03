@@ -62,7 +62,7 @@ Box.prototype.left = function(){
 Box.prototype.move = function () {
   this.vy += GRAVITY;
   this.y += this.vy;
-  this.vx *=0.9
+  this.vx *= 0.9;
   this.x += this.vx;
    
   if (this.x + this.size > canvas.width) {
@@ -80,10 +80,11 @@ Box.prototype.move = function () {
   }
 };
 
-let Obstacle = function (x, y, vx, size, color) {
+let Obstacle = function (x, y, vx, vy, size, color) {
   this.x = x;
   this.y = y;
   this.vx = vx;
+  this.vy = vy;
   this.size = size;
   this.color = color;
   
@@ -91,7 +92,9 @@ let Obstacle = function (x, y, vx, size, color) {
 };
 
 Obstacle.prototype.move = function () {
+  //this.vy += randInt(-20, 5);	
   this.x += this.vx;
+  this.y += this.vy;
 };
 
 function makeObstacle() {
@@ -99,10 +102,12 @@ function makeObstacle() {
   let x = randInt(canvas.width, canvas.width + 100);
   let y = canvas.height - size;
   let color = ["red", "pink", "blue", "orange"][Math.random() * 4 | 0];
-  let vx = randInt(-4, -2);
+  let vx = randInt(-20, -10);
+  let vy = randInt(-80, 10);
+	// alert(vx);
   
 
-  obstacles.push(new Obstacle(x, y, vx, size, color));
+  obstacles.push(new Obstacle(x, y, vx, vy, size, color));
 }
 
 function randInt(lo, hi) {
@@ -149,7 +154,7 @@ function update() {
     o.move();
           
     // Draw the obstacle
-   ctx.drawImage(Bug, o.x, 0.5,212,90);
+   ctx.drawImage(Bug, o.x, o.y,212,90);
   
     // Remove this obstacle from the obstacles array if off screen 
     if (o.x + o.size < 0) {
